@@ -1,0 +1,3 @@
+include *.txt *.ini *.cfg *.rst
+recursive-include tatoeba *.ico *.png *.css *.gif *.jpg *.pt *.txt *.mak *.mako *.js *.html *.xml *.py
+recursive-include dorei *.ico *.png *.css *.gif *.jpg *.pt *.txt *.mak *.mako *.js *.html *.xml *.py

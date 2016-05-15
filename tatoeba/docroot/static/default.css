@@ -1,0 +1,218 @@
+/* YUI CSS RESET*/
+/* YUI 3.8.1 (build 5795) Copyright 2013 Yahoo! Inc. http://yuilibrary.com/license/ */
+html{color:#000;background:#FFF}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal}ol,ul{list-style:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}q:before,q:after{content:''}abbr,acronym{border:0;font-variant:normal}sup{vertical-align:text-top}sub{vertical-align:text-bottom}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit}input,textarea,select{font-size:100%}legend{color:#000}
+
+html, body {
+	padding: 0;
+	margin: 0;
+    -moz-box-sizing:content-box;
+    -webkit-box-sizing:content-box;
+    box-sizing:content-box;
+    font-family: sans-serif;
+}
+
+
+.mainword {
+color: #0b0;
+font-weight: bold;
+}
+
+.rword:hover {
+background-color: #ddd;
+}
+
+a {
+color: #090 !important;
+}
+
+nav {
+	position: fixed;
+	width: 30%;
+	min-width: 17em;
+	margin: 0;
+	padding-left: 1em;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+}
+
+#examples {
+	width: 100%;
+	margin: 0;
+	padding-left: 30%;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+}
+#examples:before {
+    content : "";
+    display: block;
+    position: fixed;
+    opacity: 0.9;
+    z-index: -1;
+    bottom: -4em;
+    right: 0;
+    width: 20rem;
+    height: 15rem;
+    background-image: url(/static/mei_kupla.svg);
+    background-size: 20rem 15rem;
+    background-position: 107% 109%;
+}
+
+@media screen and (max-height: 35em) {
+nav {
+	position: absolute;
+}
+}
+
+@media screen and (max-width: 70em) {
+#examples:before {
+    opacity: 0.6;
+    }
+}
+
+@media screen and (max-width: 56em) {
+#examples {
+	padding-left: 17em;
+}
+.speaker {
+	max-width: 7em;
+	white-space: normal !important;
+}
+}
+@media screen and (max-width: 38em) {
+nav {
+	width: 100%;
+	position: static;
+}
+nav .disclaimer {
+	display: none;
+}
+#examples {
+	width: 100%;
+	position: static;
+	padding-left: 1em;
+}
+#examples:before {
+    opacity: 0.3;
+    }
+
+}
+
+
+
+
+h1, h2, h3, h4 {
+	font-weight: bold;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+h3 {
+	font-size: 1.3rem;
+}
+
+#examples h2 {
+	font-size: 2rem;
+	padding-top: 1em;
+}
+
+#examples li {
+	margin-bottom: 2em;
+	width: 99%;
+	word-break:break-all;
+}
+#examples li p {
+	font-size: 1.3em;
+}
+
+form {
+padding: 0;
+margin: 0;
+font-size: 0;
+}
+
+.controls * {
+vertical-align: bottom;
+}
+
+input {
+padding: 0;
+margin: 0;
+height: 26px;
+font-size: 16px;
+border: 2px solid #777;
+background-color: #f8f8f8;
+vertical-align: middle;
+margin-right: 0.5em;
+}
+
+button {
+padding: 0;
+margin: 0;
+border: none;
+background-color:transparent;
+vertical-align: middle;
+}
+
+input[type="radio"]:checked + label {
+background-color: #66dd66;
+}
+
+input[type="radio"] + label {
+height: 1.3em;
+margin-bottom: 5px;
+}
+
+.zako {
+display: none;
+font-size: 0.7em;
+line-height: 0.7em;
+margin-right: 1em;
+}
+
+.hanzako {
+display: none;
+font-size: 0.7em;
+line-height: 0.7em;
+margin-right: 1em;
+}
+
+.zako input {font-size: 0.7em;}
+
+.textbutton {
+border-radius: 5px; 
+-moz-border-radius: 5px; 
+-webkit-border-radius: 5px; 
+color: white !important;
+text-decoration: none;
+font-weight: bold;
+font-size: 1rem;
+padding: 0.2rem;
+padding-left: 1.3rem;
+padding-right: 1.3rem;
+margin-left: 0.3rem;
+margin-right: 0.3rem;
+text-transform:uppercase;
+background-color:#555;
+vertical-align: text-bottom;
+}
+
+button img {
+padding: 0;
+margin: 0;
+border: none;
+}
+
+strong {
+font-weight: bold;
+}
+
+.sliderlabel > span {
+text-align: center;
+border: 1px solid black;
+width: 0;
+overflow: visible;
+white-space: pre;
+text-indent: 3px;
+}
