@@ -22,9 +22,9 @@ Install the package in the environment.
 python dorei/setup.py install
 ```
 
-Most likely, a package called `prefixtree` is going to fight back, because it's essentially unmaintained. You can download it and install it manually. Remove the two top lines (`from distribute_setup import use_setuptools` and `use_setuptools()`) from it's setup.py and it should give in.
+Most likely, a package called `prefixtree` is going to fight back, because it's essentially unmaintained. You can download it and install it manually. Remove the two top lines (`from distribute_setup import use_setuptools` and `use_setuptools()`) from it's setup.py and it should install.
 
-Try again until you have dorei and it's dependencies installed.
+Try until you have dorei and it's dependencies installed.
 
 Launch dorei.
 ```
