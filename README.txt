@@ -1,1 +1,1 @@
-tatoeba README
+dorei README

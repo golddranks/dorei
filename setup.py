@@ -15,9 +15,9 @@ requires = [
     'prefixtree',
     ]
 
-setup(name='tatoeba',
+setup(name='dorei',
       version='0.59',
-      description='tatoeba',
+      description='dorei',
       long_description=README + '\n\n' + CHANGES,
       classifiers=[
         "Programming Language :: Python",
@@ -34,9 +34,9 @@ setup(name='tatoeba',
       zip_safe=False,
       install_requires=requires,
       tests_require=requires,
-      test_suite="tatoeba",
+      test_suite="dorei",
       entry_points="""\
       [paste.app_factory]
-      main = tatoeba:main
+      main = dorei:main
       """,
       )

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from tatoeba.utils.grepper import grep
-from tatoeba.utils.examples import open_examples, open_audio, freq_by_lexeme, readline_backwards, humantime_to_seconds
+from dorei.utils.grepper import grep
+from dorei.utils.examples import open_examples, open_audio, freq_by_lexeme, readline_backwards, humantime_to_seconds
 from pyramid.view import view_config
 from httpagentparser import detect as ua_detect
 from os import path, SEEK_END
@@ -125,17 +125,17 @@ def suomenna_lexeme(lex, extra):
 	return {'sana': w[0], 'sanaluokka':w[2], 'taivutus':w[4], 'selitys':selitys}
 
 try:
-	ajastus_dict = pickle.load(open(prefix+'tatoeba/ajastukset.pickle', 'rb'))
+	ajastus_dict = pickle.load(open(prefix+'dorei/ajastukset.pickle', 'rb'))
 except FileNotFoundError:
 	ajastus_dict = {}
 
 try:
 	print('loading index from pickle', file=sys.stderr)
-	lexeme_by_form = pickle.load(open(prefix+'tatoeba/lexemebyform.pickle', 'rb'))
+	lexeme_by_form = pickle.load(open(prefix+'dorei/lexemebyform.pickle', 'rb'))
 except FileNotFoundError:
 	print('building index (word_ep.txt)', file=sys.stderr)
 	lexeme_by_form = {}
-	for line in open(prefix+'tatoeba/corpus/words_ep.txt'):
+	for line in open(prefix+'dorei/corpus/words_ep.txt'):
 		lexeme = line.strip('\n').split('\t')
 		forms = lexeme[1].split('::')
 		lemma = lexeme[0]
@@ -148,7 +148,7 @@ except FileNotFoundError:
 				lexeme_by_form[form] = l
 			l.append(lexeme)
 	print('index built. pickling it.', file=sys.stderr)
-	pickle.dump(lexeme_by_form, open(prefix+'tatoeba/lexemebyform.pickle', 'wb'))
+	pickle.dump(lexeme_by_form, open(prefix+'dorei/lexemebyform.pickle', 'wb'))
 print('ready.', file=sys.stderr)
 
 
@@ -205,12 +205,12 @@ def home(request):
 	return defaults
 
 def jakson_alku(filename):
-	path = prefix+'tatoeba/timed_text/'+filename.replace('..', '')+'.txt'
+	path = prefix+'dorei/timed_text/'+filename.replace('..', '')+'.txt'
 	line = open(path, 'r').readline().split('::')
 	return (humantime_to_seconds( line[0] ), line[2])
 	
 def jakson_loppu(filename):
-	path = prefix+'tatoeba/timed_text/'+filename.replace('..', '')+'.txt'
+	path = prefix+'dorei/timed_text/'+filename.replace('..', '')+'.txt'
 	f = open(path, 'rb')
 	f.seek(0, SEEK_END)
 	line = readline_backwards(f, '\n', 1024).split('::')
@@ -229,7 +229,7 @@ def aseta_paikka(text_pos, audio_pos, filename, ajatus_dict): # audio_position =
 	ajastus_dict[name] = ep_ajastukset
 	serie[name] = ep_ajastukset
 	ajastus_dict[serie_name] = serie	
-	pickle.dump(ajastus_dict, open(prefix+'tatoeba/ajastukset.pickle', 'wb'))
+	pickle.dump(ajastus_dict, open(prefix+'dorei/ajastukset.pickle', 'wb'))
 
 def selvita_perusteet(filename, full_duration):
 	text_start, firstline = jakson_alku(filename)
@@ -290,7 +290,7 @@ def hae_lahin_repla(audio_target, points, filename, l_limit, r_limit, full_durat
 			r_text_deviation = text_point - audio_point
 			r_text_target = r_text_deviation + audio_target
 			break
-	filename = prefix+'tatoeba/timed_text/'+filename.replace('..', '')+'.txt'
+	filename = prefix+'dorei/timed_text/'+filename.replace('..', '')+'.txt'
 	f = open(filename, 'r').readlines()
 
 
@@ -349,7 +349,7 @@ def hae_tekstialue(audio_start, audio_end, points, filename):
 		if audio >= audio_end:
 			text_end = text-audio+audio_end
 			break
-	filename = prefix+'tatoeba/timed_text/'+filename.replace('..', '')+'.txt'
+	filename = prefix+'dorei/timed_text/'+filename.replace('..', '')+'.txt'
 	f = open(filename, 'r').readlines()
 	line_start, start_line_no = binary_search(f, text_start)
 	if line_start >= text_end:
@@ -432,7 +432,7 @@ def ajastus_alg(request):
 @view_config(route_name='kohdan_ajastus')
 def ajastus(request):
 	words = request.GET['w'].replace('"', '')
-	filename = prefix+'tatoeba/timed_text/'+request.GET['f'].replace('..', '')+'.txt'
+	filename = prefix+'dorei/timed_text/'+request.GET['f'].replace('..', '')+'.txt'
 	checks = request.GET.get('checks')
 	if not checks:
 		out = grep(filename, words)
@@ -513,7 +513,7 @@ def audio(request):
 		status_code = 200
 	except Exception as e:
 		print(str(e))
-		filename = prefix + "tatoeba/tatoeba/docroot/static/error.mp4"
+		filename = prefix + "dorei/dorei/docroot/static/error.mp4"
 		status_code = 500
 	resp =  FileResponse(filename, request=None, cache_max_age=None, content_type='audio/mp4', content_encoding=None)
 	resp.status_code = status_code
